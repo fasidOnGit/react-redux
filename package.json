@@ -6,8 +6,9 @@
   "license": "MIT",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel open:src lint:watch test:watch",
+    "start": "npm-run-all --parallel open:backend open:src lint:watch test:watch",
     "open:src": "babel-node tools/srcServer.js",
+    "open:backend": "babel-node backend/server.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter spec tools/testSetup.js \"src/**/*.test.js\"",
@@ -21,8 +22,12 @@
   },
   "dependencies": {
     "babel-polyfill": "6.8.0",
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
     "bootstrap": "3.3.6",
     "jquery": "2.2.3",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.5",
     "prop-types": "^15.6.0",
     "react": "15.0.2",
     "react-dom": "15.0.2",
